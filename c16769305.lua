@@ -1,4 +1,4 @@
---魔界造車-GT19
+--魔界造車－GT19
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--flip
