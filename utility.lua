@@ -633,16 +633,15 @@ end
 function Auxiliary.SynMixHandFilter(c,tp,syncard)
 	if not c:IsLocation(LOCATION_HAND) then return false end
 	local le={c:IsHasEffect(EFFECT_EXTRA_SYNCHRO_MATERIAL,tp)}
-	local res=true
 	for _,te in pairs(le) do
 		local tf=te:GetValue()
 		if Auxiliary.GetValueType(tf)=="function" then
-			if tf(te,syncard) then res=false end
+			if tf(te,syncard) then return false end
 		else
-			if tf~=0 then res=false end
+			if tf~=0 then return false end
 		end
 	end
-	return res
+	return true
 end
 function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
 	if ct<minc then return false end
